@@ -7,7 +7,8 @@ package Main;
 
 /**
  *
- * @author florent
+ * @author Florent
+ * @author Warren
  */
 public class IHMDilemme extends javax.swing.JFrame {
 
@@ -187,9 +188,9 @@ public class IHMDilemme extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Partie partie = new Partie();
-        partie.cooperer(true, true);
-        assertTrue(partie.getACooperer(2,1)); //param : numero manche,joueur 
+        Partie laPartie = new Partie();
+        laPartie.cooperer(true, true);
+        // assertTrue(laPartie.getACooperer(2,1)); //param : numero manche,joueur 
         // TODO: 5 méthodes : getGain(),Getnbrcoup,getScoreAOUB()
     }//GEN-LAST:event_jButton3ActionPerformed
 
