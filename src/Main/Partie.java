@@ -12,89 +12,95 @@ import java.util.ArrayList;
  * @author Florent
  * @author Warren
  */
-public class Partie extends Joueur {
+public class Partie {
 
-    private ArrayList<String[]> manche;
-    private int nbrcoups;
-    private Joueur joueur1;
-    private Joueur joueur2;
+    private ArrayList<boolean[]> coups;
 
     public Partie() {
-        this.joueur1 = new Joueur();
-        this.joueur2 = new Joueur();
-        this.manche = new ArrayList<String[]>();
+        this.coups = new ArrayList<boolean[]>();
     }
 
-    public boolean getACooperer(int manchetmp, int numero_joueur) {
-        String[] coup = this.manche.get(manchetmp);
-        if (coup[numero_joueur].equals("Cooperer")) {
-            return true;
-        } else if (coup[numero_joueur].equals("FaitDefaut")) {
-            return false;
-        }
-        return false;
+    public boolean aCoopere(int manchetmp, int numero_joueur) {
+        return coups.get(manchetmp)[numero_joueur];
     }
 
-    public void cooperer(boolean joueur1, boolean joueur2) {
-        String[] choix = new String[2];
-        if (joueur1 && joueur2) {
-            choix[0] = "Cooperer";
-            choix[1] = "Cooperer";
-            this.manche.add(choix);
-        } else if (!joueur1 && joueur2) {
-            choix[0] = "FaitDefaut";
-            choix[1] = "Cooperer";
-            this.manche.add(choix);
-        } else if (joueur1 && !joueur2) {
-            choix[0] = "Cooperer";
-            choix[1] = "FaitDefaut";
-            this.manche.add(choix);
-        } else if (!joueur1 && !joueur2) {
-            choix[0] = "FaitDefaut";
-            choix[1] = "FaitDefaut";
-            this.manche.add(choix);
-        }
+    public void cooperer(boolean j1, boolean j2) {
+        boolean[] coup = {j1, j2};
+        coups.add(coup);
     }
 
-    public int getScoreJoueur(int numero_Joueur) {
-        if (numero_Joueur == 0) {
-            return this.joueur1.getScore();
-        } else if (numero_Joueur == 1) {
-            return this.joueur2.getScore();
+    /**
+     * Gain au coup noCoup du joueur noJoueur. Les coups commencent à 0, et
+     * noJoueur = 0 ou 1
+     *
+     * @param noCoup
+     * @param noJoueur
+     * @return
+     */
+    public int getGain(int noCoup, int noJoueur) {
+        int result = 3;
+        boolean[] coup = coups.get(noCoup);
+        if (noJoueur == 0) {
+            if (coup[0] && coup[1]) {
+                result = 3;
+            }
+            if (!coup[0] && coup[1]) {
+                result = 5;
+
+            }
+            if (coup[0] && !coup[1]) {
+                result = 0;
+            }
+            if (!coup[0] && !coup[1]) {
+                result = 1;
+            }
+        } else if (noJoueur == 1) {
+            if (coup[0] && coup[1]) {
+                result = 3;
+            }
+            if (!coup[0] && coup[1]) {
+                result = 0;
+
+            }
+            if (coup[0] && !coup[1]) {
+                result = 5;
+            }
+            if (!coup[0] && !coup[1]) {
+                result = 1;
+            }
         }
-        return -1;
+        return result;
     }
 
-    public int getNbrCoupJoueur(int numero_Joueur) {
-        if (numero_Joueur == 0) {
-            return this.joueur1.getNbrCoup();
-        } else if (numero_Joueur == 1) {
-            return this.joueur2.getNbrCoup();
+    public int getScoreJoueur(int numeroJoueur) {
+        int result = 0;
+        for (boolean[] coup : coups) {
+            if (numeroJoueur == 0) {
+                if (coup[0] && coup[1]) {
+                    result += 3;
+                }
+                if (!coup[0] && coup[1]) {
+                    result += 5;
+                }
+                if (!coup[0] && !coup[1]) {
+                    result += 1;
+                }
+            } else if (numeroJoueur == 1) {
+                if (coup[0] && coup[1]) {
+                    result += 3;
+                }
+                if (coup[0] && !coup[1]) {
+                    result += 5;
+                }
+                if (!coup[0] && !coup[1]) {
+                    result += 1;
+                }
+            }
         }
-        return -1;
+        return result;
     }
 
-    public int[] getGain(int gainManche, int numero_Joueur) {
-        String[] manchetmp = this.manche.get(gainManche);
-        int[] tab = new int[2];
-        if (manchetmp[numero_Joueur].equals("Cooperer") && manchetmp[numero_Joueur].equals("Cooperer")) {
-            tab[0] = 1;
-            tab[1] = 1;
-            return tab;
-        } else if (manchetmp[numero_Joueur].equals("Cooperer") && manchetmp[numero_Joueur].equals("FaitDefaut")) {
-            tab[0] = 0;
-            tab[1] = 5;
-            return tab;
-        } else if (manchetmp[numero_Joueur].equals("FaitDefaut") && manchetmp[numero_Joueur].equals("Cooperer")) {
-            tab[0] = 5;
-            tab[1] = 0;
-            return tab;
-
-        } else if (manchetmp[numero_Joueur].equals("FaitDefaut") && manchetmp[numero_Joueur].equals("FaitDefaut")) {
-            tab[0] = 3;
-            tab[1] = 3;
-            return tab;
-        }
-        return null;
+    public int getNbrCoups() {
+        return coups.size();
     }
 }

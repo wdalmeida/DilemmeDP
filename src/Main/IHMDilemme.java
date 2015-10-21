@@ -190,7 +190,7 @@ public class IHMDilemme extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Partie laPartie = new Partie();
         laPartie.cooperer(true, true);
-        // assertTrue(laPartie.getACooperer(2,1)); //param : numero manche,joueur 
+        // assertTrue(laPartie.aCoopere(2,1)); //param : numero manche,joueur 
         // TODO: 5 méthodes : getGain(),Getnbrcoup,getScoreAOUB()
     }//GEN-LAST:event_jButton3ActionPerformed
 
