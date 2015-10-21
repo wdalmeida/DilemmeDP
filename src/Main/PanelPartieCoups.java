@@ -11,11 +11,14 @@ package Main;
  */
 public class PanelPartieCoups extends javax.swing.JPanel {
 
+    private Partie laPartie;
+
     /**
      * Creates new form PanelPartieSynthese
      */
     public PanelPartieCoups() {
         initComponents();
+        laPartie = new Partie();
     }
 
     /**
@@ -27,28 +30,45 @@ public class PanelPartieCoups extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonCD = new javax.swing.JButton();
+        jButtonDD = new javax.swing.JButton();
+        JbuttonCC = new javax.swing.JButton();
+        jButtonDC = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        jButton1.setText("C | F");
+        setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Prochain coup", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 204, 0))); // NOI18N
 
-        jButton2.setText("F | F");
-
-        jButton3.setText("C | C");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCD.setText("C | D");
+        jButtonCD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonCDActionPerformed(evt);
             }
         });
 
-        jButton4.setText("F | C");
+        jButtonDD.setText("D | D");
+        jButtonDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDDActionPerformed(evt);
+            }
+        });
+
+        JbuttonCC.setText("C | C");
+        JbuttonCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JbuttonCCActionPerformed(evt);
+            }
+        });
+
+        jButtonDC.setText("D | C");
+        jButtonDC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDCActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Coopere");
 
@@ -71,15 +91,15 @@ public class PanelPartieCoups extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jLabel3)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton3)
+                            .addComponent(JbuttonCC)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1))
+                            .addComponent(jButtonCD))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton4)
+                            .addGap(8, 8, 8)
+                            .addComponent(jButtonDC)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton2)))
+                            .addComponent(jButtonDD)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel5)
@@ -99,31 +119,40 @@ public class PanelPartieCoups extends javax.swing.JPanel {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
+                    .addComponent(jButtonCD)
+                    .addComponent(JbuttonCC)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jLabel4))
+                    .addComponent(jButtonDD)
+                    .addComponent(jLabel4)
+                    .addComponent(jButtonDC, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Partie laPartie = new Partie();
+    private void JbuttonCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbuttonCCActionPerformed
         laPartie.cooperer(true, true);
-        // assertTrue(laPartie.aCoopere(2,1)); //param : numero manche,joueur
-        // TODO: 5 méthodes : getGain(),Getnbrcoup,getScoreAOUB()
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_JbuttonCCActionPerformed
+
+    private void jButtonDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDCActionPerformed
+        laPartie.cooperer(false, true);
+    }//GEN-LAST:event_jButtonDCActionPerformed
+
+    private void jButtonCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCDActionPerformed
+        laPartie.cooperer(true, false);
+    }//GEN-LAST:event_jButtonCDActionPerformed
+
+    private void jButtonDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDDActionPerformed
+        laPartie.cooperer(false, false);
+    }//GEN-LAST:event_jButtonDDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton JbuttonCC;
+    private javax.swing.JButton jButtonCD;
+    private javax.swing.JButton jButtonDC;
+    private javax.swing.JButton jButtonDD;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
