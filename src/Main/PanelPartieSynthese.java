@@ -34,7 +34,7 @@ public class PanelPartieSynthese extends javax.swing.JPanel {
         jLabelScoreB = new javax.swing.JLabel();
         scoreB = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 153)));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.red, java.awt.Color.cyan, java.awt.Color.lightGray), "Synthèse"));
 
         jLabelNbCoups.setText("Nombre de coups : ");
 

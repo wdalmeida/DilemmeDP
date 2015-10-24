@@ -11,14 +11,11 @@ package Main;
  */
 public class PanelPartieCoups extends javax.swing.JPanel {
 
-    private Partie laPartie;
-
     /**
      * Creates new form PanelPartieSynthese
      */
     public PanelPartieCoups() {
         initComponents();
-        laPartie = new Partie();
     }
 
     /**
@@ -40,7 +37,7 @@ public class PanelPartieCoups extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Prochain coup", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 204, 0))); // NOI18N
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 0)), "Prochain coup"));
 
         jButtonCD.setText("C | D");
         jButtonCD.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +123,7 @@ public class PanelPartieCoups extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDD)
                     .addComponent(jLabel4)
-                    .addComponent(jButtonDC, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonDC))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
