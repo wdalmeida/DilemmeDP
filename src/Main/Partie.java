@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- *
+ * Partie gère le déroulement du jeu
  * @author Florent
  * @author Warren
  */
