@@ -6,13 +6,14 @@
 package Main;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 /**
  *
  * @author Florent
  * @author Warren
  */
-public class Partie {
+public class Partie extends Observable {
 
     /**
      *
@@ -24,7 +25,7 @@ public class Partie {
      * boolean
      */
     public Partie() {
-        this.coups = new ArrayList<boolean[]>();
+        this.coups = new ArrayList<>();
     }
 
     /**
@@ -47,6 +48,8 @@ public class Partie {
     public void cooperer(boolean j1, boolean j2) {
         boolean[] coup = {j1, j2};
         coups.add(coup);
+        setChanged();
+        notifyObservers();
     }
 
     /**

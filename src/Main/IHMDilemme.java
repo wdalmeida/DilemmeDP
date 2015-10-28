@@ -23,9 +23,9 @@ public class IHMDilemme extends javax.swing.JFrame {
      * Creates new form IHMDilemme
      */
     public IHMDilemme() {
+        laPartie = new Partie();
         initComponents();
         //Modele
-        laPartie = new Partie();
         // Composant
         initComposant();
         //Centrer sur l'ecran
@@ -50,8 +50,8 @@ public class IHMDilemme extends javax.swing.JFrame {
     private void initComponents() {
 
         panelPartieCoups1 = new Main.PanelPartieCoups();
-        panelPartieSynthese1 = new Main.PanelPartieSynthese();
-        panelPartieTableau1 = new Main.PanelPartieTableau();
+        panelPartieSynthese1 = new Main.PanelPartieSynthese(laPartie);
+        panelPartieTableau1 = new Main.PanelPartieTableau(laPartie);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,14 +93,13 @@ public class IHMDilemme extends javax.swing.JFrame {
         JButton boutonCD = (JButton) panelPartieCoups1.getBouton(2);
         JButton boutonDC = (JButton) panelPartieCoups1.getBouton(3);
         JButton boutonDD = (JButton) panelPartieCoups1.getBouton(4);
-        
-        JLabel nbCoups = (JLabel)panelPartieSynthese1.getLabel("nbCoups");
-        JLabel scoreA = (JLabel)panelPartieSynthese1.getLabel("scoreA");
-        JLabel scoreB = (JLabel)panelPartieSynthese1.getLabel("scoreB");
-        
+
+        JLabel nbCoups = (JLabel) panelPartieSynthese1.getLabel("nbCoups");
+        JLabel scoreA = (JLabel) panelPartieSynthese1.getLabel("scoreA");
+        JLabel scoreB = (JLabel) panelPartieSynthese1.getLabel("scoreB");
+
         boutonCC.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(true, true);
-            nbCoups.setText(""+laPartie.getNbrCoups());
         });
         boutonCD.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(true, false);

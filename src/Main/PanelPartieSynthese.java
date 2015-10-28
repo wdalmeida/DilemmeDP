@@ -5,19 +5,28 @@
  */
 package Main;
 
+import java.util.Observable;
+import java.util.Observer;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
  *
  * @author Warren
  */
-public class PanelPartieSynthese extends javax.swing.JPanel {
-
+public class PanelPartieSynthese extends javax.swing.JPanel implements Observer {
+    
+    private Partie partie;
     /**
      * Creates new form PanelPartieSynthese
+     * @param laPartie
      */
-    public PanelPartieSynthese() {
+    public PanelPartieSynthese(Partie laPartie) {
         initComponents();
+        this.partie=laPartie;
+        partie.addObserver(this);
+        
     }
 
     /**
@@ -85,21 +94,22 @@ public class PanelPartieSynthese extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-public JLabel getLabel(String choix){
-    JLabel tmp = null;
+
+    public JLabel getLabel(String choix) {
+        JLabel tmp = null;
         switch (choix) {
             case "nbCoups":
-                tmp= nbCoups;
+                tmp = nbCoups;
                 break;
             case "scoreA":
-                tmp= scoreA;
+                tmp = scoreA;
                 break;
             case "scoreB":
                 tmp = scoreB;
                 break;
         }
         return tmp;
-}
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelNbCoups;
@@ -109,4 +119,14 @@ public JLabel getLabel(String choix){
     private javax.swing.JLabel scoreA;
     private javax.swing.JLabel scoreB;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if(partie== o && partie.getNbrCoups()>0){
+            nbCoups.setText(""+partie.getNbrCoups());
+            scoreA.setText(""+partie.getScoreJoueur(0));
+            scoreB.setText(""+partie.getScoreJoueur(1));
+        }
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
