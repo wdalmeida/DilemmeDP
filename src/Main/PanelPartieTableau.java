@@ -70,7 +70,9 @@ public class PanelPartieTableau extends javax.swing.JPanel implements Observer {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+public JTable getTable(){
+    return jTable1;
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
