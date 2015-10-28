@@ -5,19 +5,30 @@
  */
 package Main;
 
-import javax.swing.JTable;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Vector;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Warren
  */
-public class PanelPartieTableau extends javax.swing.JPanel {
+public class PanelPartieTableau extends javax.swing.JPanel implements Observer {
+
+    private Partie partie;
 
     /**
      * Creates new form PanelPartieTableau
      */
-    public PanelPartieTableau() {
+    public PanelPartieTableau(Partie laPartie) {
         initComponents();
+        partie = laPartie;
+        partie.addObserver(this);
+
     }
 
     /**
@@ -67,4 +78,27 @@ public JTable getTable(){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        int joueur1 = partie.getGain(partie.getNbrCoups() - 1, 0);
+        int joueur2 = partie.getGain(partie.getNbrCoups() - 1, 1);
+        String choix1 = "";
+        String choix2 = "";
+        if (partie == o && partie.getNbrCoups() > 0) {
+            if (partie.aCoopere(partie.getNbrCoups()-1, 0) == true) {
+                choix1 = "C";
+            } else {
+                choix1 = "D";
+            }
+            if (partie.aCoopere(partie.getNbrCoups()-1, 1) == true) {
+                choix2 = "C";
+            } else {
+                choix2 = "D";
+            }
+        }
+        Object[] line = {"" + partie.getNbrCoups(), choix1, choix2, joueur1, joueur2};
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.addRow(line);
+    }
 }

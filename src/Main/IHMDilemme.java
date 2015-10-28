@@ -58,8 +58,8 @@ public class IHMDilemme extends javax.swing.JFrame {
     private void initComponents() {
 
         panelPartieCoups1 = new Main.PanelPartieCoups();
-        panelPartieSynthese1 = new Main.PanelPartieSynthese();
-        panelPartieTableau1 = new Main.PanelPartieTableau();
+        panelPartieSynthese1 = new Main.PanelPartieSynthese(laPartie);
+        panelPartieTableau1 = new Main.PanelPartieTableau(laPartie);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,26 +95,18 @@ public class IHMDilemme extends javax.swing.JFrame {
   /**
      */
     private void initComposant() {
-        // Vue
-        JButton boutonCC = (JButton) panelPartieCoups1.getBouton("CC");
-        JButton boutonCD = (JButton) panelPartieCoups1.getBouton("CD");
-        JButton boutonDC = (JButton) panelPartieCoups1.getBouton("DC");
-        JButton boutonDD = (JButton) panelPartieCoups1.getBouton("DD");
+        // Initialisation
+        JButton boutonCC = (JButton) panelPartieCoups1.getBouton(1);
+        JButton boutonCD = (JButton) panelPartieCoups1.getBouton(2);
+        JButton boutonDC = (JButton) panelPartieCoups1.getBouton(3);
+        JButton boutonDD = (JButton) panelPartieCoups1.getBouton(4);
 
-        JTable jTable1 = panelPartieTableau1.getTable();
+        JLabel nbCoups = (JLabel) panelPartieSynthese1.getLabel("nbCoups");
+        JLabel scoreA = (JLabel) panelPartieSynthese1.getLabel("scoreA");
+        JLabel scoreB = (JLabel) panelPartieSynthese1.getLabel("scoreB");
 
-        nbCoups = (JLabel) panelPartieSynthese1.getLabel("nbCoups");
-        scoreA = (JLabel) panelPartieSynthese1.getLabel("scoreA");
-        scoreB = (JLabel) panelPartieSynthese1.getLabel("scoreB");
-        
-        // Controleur 
         boutonCC.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(true, true);
-            Object[] nouvelleLigne = {Integer.parseInt(nbCoups.getText())+1, "C", "C", 3, 3};
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.addRow(nouvelleLigne);
-            refresh();
-
         });
         boutonCD.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(true, false);
