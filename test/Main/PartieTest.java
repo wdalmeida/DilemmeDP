@@ -27,7 +27,7 @@ public class PartieTest {
     public void testGetACoopererTrueTrue() {
         partie.cooperer(true, true);
         assertTrue(partie.aCoopere(0, 0));
-        assertTrue(partie.aCoopere(0,1));
+        assertTrue(partie.aCoopere(0, 1));
         assertEquals(3, partie.getGain(0, 0));
         assertEquals(3, partie.getGain(0, 1));
 
@@ -47,7 +47,7 @@ public class PartieTest {
         partie.cooperer(false, true);
         assertFalse(partie.aCoopere(0, 0));
         assertTrue(partie.aCoopere(0, 1));
-        assertEquals(5, partie.getGain(0,0));
+        assertEquals(5, partie.getGain(0, 0));
         assertEquals(0, partie.getGain(0, 1));
     }
 
@@ -55,9 +55,9 @@ public class PartieTest {
     public void testGetACoopererFalseFalse() {
         partie.cooperer(false, false);
         assertFalse(partie.aCoopere(0, 0));
-        assertFalse(partie.aCoopere(0,1));
-        assertEquals(1, partie.getGain(0,0));
-        assertEquals(1, partie.getGain(0,1));
+        assertFalse(partie.aCoopere(0, 1));
+        assertEquals(1, partie.getGain(0, 0));
+        assertEquals(1, partie.getGain(0, 1));
 
     }
 
@@ -69,23 +69,15 @@ public class PartieTest {
         partie.cooperer(false, false);
         partie.cooperer(false, true); // Pour crée une différence dans le score
 
-
-        assertEquals(3+0+5+1+5, partie.getScoreJoueur(0));
-        assertEquals(3+5+0+1+0, partie.getScoreJoueur(1));
+        assertEquals(3 + 0 + 5 + 1 + 5, partie.getScoreJoueur(0));
+        assertEquals(3 + 5 + 0 + 1 + 0, partie.getScoreJoueur(1));
         assertEquals(5, partie.getNbrCoups());
     }
 
-    public void testGetScore() {
 
-    }
-
-    public void testCoup() {
-
-    }
-
-   /* @Test
-    public void testReinitialiser() {
-        partie.reset();
-        assertEquals(0, partie.getNbrCoups(1));
-    }*/
+    /* @Test
+     public void testReinitialiser() {
+     partie.reset();
+     assertEquals(0, partie.getNbrCoups(1));
+     }*/
 }

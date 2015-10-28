@@ -7,8 +7,6 @@ package Main;
 
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
@@ -16,17 +14,22 @@ import javax.swing.JLabel;
  * @author Warren
  */
 public class PanelPartieSynthese extends javax.swing.JPanel implements Observer {
-    
+
     private Partie partie;
+
+    public PanelPartieSynthese() {
+    }
+
     /**
      * Creates new form PanelPartieSynthese
+     *
      * @param laPartie
      */
     public PanelPartieSynthese(Partie laPartie) {
         initComponents();
-        this.partie=laPartie;
+        partie = laPartie;
         partie.addObserver(this);
-        
+
     }
 
     /**
@@ -122,10 +125,10 @@ public class PanelPartieSynthese extends javax.swing.JPanel implements Observer 
 
     @Override
     public void update(Observable o, Object arg) {
-        if(partie== o && partie.getNbrCoups()>0){
-            nbCoups.setText(""+partie.getNbrCoups());
-            scoreA.setText(""+partie.getScoreJoueur(0));
-            scoreB.setText(""+partie.getScoreJoueur(1));
+        if (partie == o && partie.getNbrCoups() > 0) {
+            nbCoups.setText("" + partie.getNbrCoups());
+            scoreA.setText("" + partie.getScoreJoueur(0));
+            scoreB.setText("" + partie.getScoreJoueur(1));
         }
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

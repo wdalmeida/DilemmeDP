@@ -132,7 +132,7 @@ public class PanelPartieCoups extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JButtonCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonCCActionPerformed
-       // laPartie.cooperer(true, true);
+        // laPartie.cooperer(true, true);
     }//GEN-LAST:event_JButtonCCActionPerformed
 
     private void JButtonDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonDCActionPerformed
@@ -147,15 +147,14 @@ public class PanelPartieCoups extends javax.swing.JPanel {
         // laPartie.cooperer(false, false);
     }//GEN-LAST:event_JButtonDDActionPerformed
 
-public JButton getBouton(String choix)
-{
-    JButton tmp = null;
+    public JButton getBouton(String choix) {
+        JButton tmp = null;
         switch (choix) {
             case "CC":
                 tmp = JButtonCC;
                 break;
             case "CD":
-                tmp= JButtonCD;
+                tmp = JButtonCD;
                 break;
             case "DC":
                 tmp = JButtonDC;
@@ -164,8 +163,8 @@ public JButton getBouton(String choix)
                 tmp = JButtonDD;
                 break;
         }
-    return tmp;
-}
+        return tmp;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButtonCC;
     private javax.swing.JButton JButtonCD;

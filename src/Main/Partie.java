@@ -10,6 +10,7 @@ import java.util.Observable;
 
 /**
  * Partie gère le déroulement du jeu
+ *
  * @author Florent
  * @author Warren
  */
@@ -18,6 +19,7 @@ public class Partie extends Observable {
     /**
      *
      */
+    @SuppressWarnings("FieldMayBeFinal")
     private ArrayList<boolean[]> coups;
 
     /**
@@ -31,22 +33,22 @@ public class Partie extends Observable {
     /**
      * aCoopere
      *
-     * @param manchetmp int commence à 0
-     * @param numero_joueur int commence à 0
+     * @param numeroManche int commence à 0
+     * @param numeroJoueur int commence à 0
      * @return un boolean du coup
      */
-    public boolean aCoopere(int manchetmp, int numero_joueur) {
-        return coups.get(manchetmp)[numero_joueur];
+    public boolean aCoopere(int numeroManche, int numeroJoueur) {
+        return coups.get(numeroManche)[numeroJoueur];
     }
 
     /**
-     * cooperer ajoute un coup dans le tableau de coup
+     * cooperer ajoute un coup
      *
-     * @param j1 boolean
-     * @param j2 boolean
+     * @param cooperationJ1 boolean
+     * @param cooperationJ2 boolean
      */
-    public void cooperer(boolean j1, boolean j2) {
-        boolean[] coup = {j1, j2};
+    public void cooperer(boolean cooperationJ1, boolean cooperationJ2) {
+        boolean[] coup = {cooperationJ1, cooperationJ2};
         coups.add(coup);
         setChanged();
         notifyObservers();

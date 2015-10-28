@@ -18,14 +18,19 @@ public class PanelPartieTableau extends javax.swing.JPanel implements Observer {
 
     private Partie partie;
 
+    public PanelPartieTableau() {
+        initComponents();
+    }
+
     /**
      * Creates new form PanelPartieTableau
+     *
+     * @param laPartie
      */
     public PanelPartieTableau(Partie laPartie) {
         initComponents();
         partie = laPartie;
         partie.addObserver(this);
-
     }
 
     /**
@@ -67,9 +72,9 @@ public class PanelPartieTableau extends javax.swing.JPanel implements Observer {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-public JTable getTable(){
-    return jTable1;
-}
+public JTable getTable() {
+        return jTable1;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
@@ -83,12 +88,12 @@ public JTable getTable(){
         String choix1 = "";
         String choix2 = "";
         if (partie == o && partie.getNbrCoups() > 0) {
-            if (partie.aCoopere(partie.getNbrCoups()-1, 0) == true) {
+            if (partie.aCoopere(partie.getNbrCoups() - 1, 0)) {
                 choix1 = "C";
             } else {
                 choix1 = "D";
             }
-            if (partie.aCoopere(partie.getNbrCoups()-1, 1) == true) {
+            if (partie.aCoopere(partie.getNbrCoups() - 1, 1)) {
                 choix2 = "C";
             } else {
                 choix2 = "D";
