@@ -60,33 +60,25 @@ public class Partie {
     public int getGain(int noCoup, int noJoueur) {
         int result = 3;
         boolean[] coup = coups.get(noCoup);
+        if (coup[0] && coup[1]) {
+            result = 3;
+        }
+        if (!coup[0] && !coup[1]) {
+            result = 1;
+        }
         if (noJoueur == 0) {
-            if (coup[0] && coup[1]) {
-                result = 3;
-            }
             if (!coup[0] && coup[1]) {
                 result = 5;
-
             }
             if (coup[0] && !coup[1]) {
                 result = 0;
-            }
-            if (!coup[0] && !coup[1]) {
-                result = 1;
             }
         } else if (noJoueur == 1) {
-            if (coup[0] && coup[1]) {
-                result = 3;
-            }
             if (!coup[0] && coup[1]) {
                 result = 0;
-
             }
             if (coup[0] && !coup[1]) {
                 result = 5;
-            }
-            if (!coup[0] && !coup[1]) {
-                result = 1;
             }
         }
         return result;
@@ -101,25 +93,19 @@ public class Partie {
     public int getScoreJoueur(int numeroJoueur) {
         int result = 0;
         for (boolean[] coup : coups) {
+            if (coup[0] && coup[1]) {
+                result += 3;
+            }
+            if (!coup[0] && !coup[1]) {
+                result += 1;
+            }
             if (numeroJoueur == 0) {
-                if (coup[0] && coup[1]) {
-                    result += 3;
-                }
                 if (!coup[0] && coup[1]) {
                     result += 5;
                 }
-                if (!coup[0] && !coup[1]) {
-                    result += 1;
-                }
             } else if (numeroJoueur == 1) {
-                if (coup[0] && coup[1]) {
-                    result += 3;
-                }
                 if (coup[0] && !coup[1]) {
                     result += 5;
-                }
-                if (!coup[0] && !coup[1]) {
-                    result += 1;
                 }
             }
         }
