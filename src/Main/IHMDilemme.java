@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,14 +19,20 @@ import javax.swing.JLabel;
  */
 public class IHMDilemme extends javax.swing.JFrame {
 
-    private Partie laPartie;
+    private final Partie laPartie;
+    private JLabel nbCoups;
+    private JLabel scoreA;
+    private JLabel scoreB;
 
     /**
      * Creates new form IHMDilemme
      */
     public IHMDilemme() {
-        initComponents();
         //Modele
+        initComponents();
+        // insertion du titre
+        setTitle("Jeu du Dilemme du Prisonnier");
+        // Initialisation de la partie
         laPartie = new Partie();
         // Composant
         initComposant();
@@ -60,13 +68,12 @@ public class IHMDilemme extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelPartieCoups1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelPartieSynthese1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(panelPartieTableau1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelPartieTableau1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,11 +81,11 @@ public class IHMDilemme extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelPartieTableau1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelPartieTableau1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelPartieCoups1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                         .addComponent(panelPartieSynthese1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34))))
         );
@@ -88,29 +95,56 @@ public class IHMDilemme extends javax.swing.JFrame {
   /**
      */
     private void initComposant() {
-        // Initialisation
-        JButton boutonCC = (JButton) panelPartieCoups1.getBouton(1);
-        JButton boutonCD = (JButton) panelPartieCoups1.getBouton(2);
-        JButton boutonDC = (JButton) panelPartieCoups1.getBouton(3);
-        JButton boutonDD = (JButton) panelPartieCoups1.getBouton(4);
+        // Vue
+        JButton boutonCC = (JButton) panelPartieCoups1.getBouton("CC");
+        JButton boutonCD = (JButton) panelPartieCoups1.getBouton("CD");
+        JButton boutonDC = (JButton) panelPartieCoups1.getBouton("DC");
+        JButton boutonDD = (JButton) panelPartieCoups1.getBouton("DD");
+
+        JTable jTable1 = panelPartieTableau1.getTable();
+
+        nbCoups = (JLabel) panelPartieSynthese1.getLabel("nbCoups");
+        scoreA = (JLabel) panelPartieSynthese1.getLabel("scoreA");
+        scoreB = (JLabel) panelPartieSynthese1.getLabel("scoreB");
         
-        JLabel nbCoups = (JLabel)panelPartieSynthese1.getLabel("nbCoups");
-        JLabel scoreA = (JLabel)panelPartieSynthese1.getLabel("scoreA");
-        JLabel scoreB = (JLabel)panelPartieSynthese1.getLabel("scoreB");
-        
+        // Controleur 
         boutonCC.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(true, true);
-            nbCoups.setText(""+laPartie.getNbrCoups());
+            Object[] nouvelleLigne = {Integer.parseInt(nbCoups.getText())+1, "C", "C", 3, 3};
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.addRow(nouvelleLigne);
+            refresh();
+
         });
         boutonCD.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(true, false);
+            Object[] nouvelleLigne = {Integer.parseInt(nbCoups.getText())+1, "C", "D", 0, 5};
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.addRow(nouvelleLigne);
+            refresh();
+
         });
         boutonDC.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(false, true);
+            Object[] nouvelleLigne = {Integer.parseInt(nbCoups.getText())+1, "D", "C", 5, 0};
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.addRow(nouvelleLigne);
+            refresh();
+
         });
         boutonDD.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(false, false);
+            Object[] nouvelleLigne = {Integer.parseInt(nbCoups.getText())+1, "D", "D", 1, 1};
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.addRow(nouvelleLigne);
+            refresh();
         });
+    }
+
+    public void refresh() {
+        nbCoups.setText("" + laPartie.getNbrCoups());
+        scoreA.setText("" + laPartie.getScoreJoueur(0));
+        scoreB.setText("" + laPartie.getScoreJoueur(1));
     }
 
     public static void main(String args[]) {

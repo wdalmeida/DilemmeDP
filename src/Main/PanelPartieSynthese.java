@@ -40,15 +40,15 @@ public class PanelPartieSynthese extends javax.swing.JPanel {
 
         jLabelNbCoups.setText("Nombre de coups : ");
 
-        nbCoups.setText("-");
+        nbCoups.setText("0");
 
         jLabelScoreA.setText("Score de A : ");
 
-        scoreA.setText("-");
+        scoreA.setText("0");
 
         jLabelScoreB.setText("Score de B : ");
 
-        scoreB.setText("-");
+        scoreB.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

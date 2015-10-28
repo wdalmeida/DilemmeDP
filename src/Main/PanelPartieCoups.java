@@ -147,20 +147,20 @@ public class PanelPartieCoups extends javax.swing.JPanel {
         // laPartie.cooperer(false, false);
     }//GEN-LAST:event_JButtonDDActionPerformed
 
-public JButton getBouton(int choix)
+public JButton getBouton(String choix)
 {
     JButton tmp = null;
         switch (choix) {
-            case 1:
+            case "CC":
                 tmp = JButtonCC;
                 break;
-            case 2:
+            case "CD":
                 tmp= JButtonCD;
                 break;
-            case 3:
+            case "DC":
                 tmp = JButtonDC;
                 break;
-            case 4:
+            case "DD":
                 tmp = JButtonDD;
                 break;
         }

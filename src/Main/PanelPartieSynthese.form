@@ -80,7 +80,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="nbCoups">
       <Properties>
-        <Property name="text" type="java.lang.String" value="-"/>
+        <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelScoreA">
@@ -90,7 +90,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="scoreA">
       <Properties>
-        <Property name="text" type="java.lang.String" value="-"/>
+        <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelScoreB">
@@ -100,7 +100,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="scoreB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="-"/>
+        <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
   </SubComponents>
