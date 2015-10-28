@@ -7,10 +7,7 @@ package Main;
 
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Vector;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**

@@ -28,12 +28,12 @@ public class IHMDilemme extends javax.swing.JFrame {
      * Creates new form IHMDilemme
      */
     public IHMDilemme() {
+        // Initialisation de la partie
+        laPartie = new Partie();
         //Modele
         initComponents();
         // insertion du titre
         setTitle("Jeu du Dilemme du Prisonnier");
-        // Initialisation de la partie
-        laPartie = new Partie();
         // Composant
         initComposant();
         //Centrer sur l'ecran
@@ -96,10 +96,10 @@ public class IHMDilemme extends javax.swing.JFrame {
      */
     private void initComposant() {
         // Initialisation
-        JButton boutonCC = (JButton) panelPartieCoups1.getBouton(1);
-        JButton boutonCD = (JButton) panelPartieCoups1.getBouton(2);
-        JButton boutonDC = (JButton) panelPartieCoups1.getBouton(3);
-        JButton boutonDD = (JButton) panelPartieCoups1.getBouton(4);
+        JButton boutonCC = (JButton) panelPartieCoups1.getBouton("CC");
+        JButton boutonCD = (JButton) panelPartieCoups1.getBouton("CD");
+        JButton boutonDC = (JButton) panelPartieCoups1.getBouton("DC");
+        JButton boutonDD = (JButton) panelPartieCoups1.getBouton("DD");
 
         JLabel nbCoups = (JLabel) panelPartieSynthese1.getLabel("nbCoups");
         JLabel scoreA = (JLabel) panelPartieSynthese1.getLabel("scoreA");
@@ -110,26 +110,12 @@ public class IHMDilemme extends javax.swing.JFrame {
         });
         boutonCD.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(true, false);
-            Object[] nouvelleLigne = {Integer.parseInt(nbCoups.getText())+1, "C", "D", 0, 5};
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.addRow(nouvelleLigne);
-            refresh();
-
         });
         boutonDC.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(false, true);
-            Object[] nouvelleLigne = {Integer.parseInt(nbCoups.getText())+1, "D", "C", 5, 0};
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.addRow(nouvelleLigne);
-            refresh();
-
         });
         boutonDD.addActionListener((ActionEvent e) -> {
             laPartie.cooperer(false, false);
-            Object[] nouvelleLigne = {Integer.parseInt(nbCoups.getText())+1, "D", "D", 1, 1};
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.addRow(nouvelleLigne);
-            refresh();
         });
     }
 
