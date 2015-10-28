@@ -5,19 +5,39 @@
  */
 package Main;
 
+import javax.swing.JFrame;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Florent
  * @author Warren
  */
 public class IHMDilemme extends javax.swing.JFrame {
- private Partie laPartie;
+
+    private Partie laPartie;
+
     /**
      * Creates new form IHMDilemme
      */
     public IHMDilemme() {
         initComponents();
+        //Modele
         laPartie = new Partie();
+        // Composant
+        initComposant();
+        //Centrer sur l'ecran
+        setLocationRelativeTo(null);
+        //permettre le redimensionnement
+        setResizable(true);
+        // Fermeture lors du clic sur la croix
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // rendre la fenetre visible
+        setVisible(true);
+        // ajuster le contenu
+        pack();
     }
 
     /**
@@ -40,35 +60,59 @@ public class IHMDilemme extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelPartieCoups1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelPartieSynthese1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
-                .addComponent(panelPartieTableau1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addGap(18, 18, 18)
+                .addComponent(panelPartieTableau1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelPartieTableau1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(80, Short.MAX_VALUE))
+                        .addComponent(panelPartieTableau1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelPartieCoups1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelPartieSynthese1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107))))
+                        .addGap(34, 34, 34))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
+  /**
      */
+    private void initComposant() {
+        // Initialisation
+        JButton boutonCC = (JButton) panelPartieCoups1.getBouton(1);
+        JButton boutonCD = (JButton) panelPartieCoups1.getBouton(2);
+        JButton boutonDC = (JButton) panelPartieCoups1.getBouton(3);
+        JButton boutonDD = (JButton) panelPartieCoups1.getBouton(4);
+        
+        JLabel nbCoups = (JLabel)panelPartieSynthese1.getLabel("nbCoups");
+        JLabel scoreA = (JLabel)panelPartieSynthese1.getLabel("scoreA");
+        JLabel scoreB = (JLabel)panelPartieSynthese1.getLabel("scoreB");
+        
+        boutonCC.addActionListener((ActionEvent e) -> {
+            laPartie.cooperer(true, true);
+            nbCoups.setText(""+laPartie.getNbrCoups());
+        });
+        boutonCD.addActionListener((ActionEvent e) -> {
+            laPartie.cooperer(true, false);
+        });
+        boutonDC.addActionListener((ActionEvent e) -> {
+            laPartie.cooperer(false, true);
+        });
+        boutonDD.addActionListener((ActionEvent e) -> {
+            laPartie.cooperer(false, false);
+        });
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -95,13 +139,7 @@ public class IHMDilemme extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IHMDilemme().setVisible(true);
-            }
-        });
+        IHMDilemme ihmDilemme = new IHMDilemme();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

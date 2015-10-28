@@ -5,6 +5,8 @@
  */
 package Main;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Warren
@@ -27,10 +29,10 @@ public class PanelPartieCoups extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonCD = new javax.swing.JButton();
-        jButtonDD = new javax.swing.JButton();
-        JbuttonCC = new javax.swing.JButton();
-        jButtonDC = new javax.swing.JButton();
+        JButtonCD = new javax.swing.JButton();
+        JButtonDD = new javax.swing.JButton();
+        JButtonCC = new javax.swing.JButton();
+        JButtonDC = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -39,31 +41,31 @@ public class PanelPartieCoups extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 0)), "Prochain coup"));
 
-        jButtonCD.setText("C | D");
-        jButtonCD.addActionListener(new java.awt.event.ActionListener() {
+        JButtonCD.setText("C | D");
+        JButtonCD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCDActionPerformed(evt);
+                JButtonCDActionPerformed(evt);
             }
         });
 
-        jButtonDD.setText("D | D");
-        jButtonDD.addActionListener(new java.awt.event.ActionListener() {
+        JButtonDD.setText("D | D");
+        JButtonDD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDDActionPerformed(evt);
+                JButtonDDActionPerformed(evt);
             }
         });
 
-        JbuttonCC.setText("C | C");
-        JbuttonCC.addActionListener(new java.awt.event.ActionListener() {
+        JButtonCC.setText("C | C");
+        JButtonCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JbuttonCCActionPerformed(evt);
+                JButtonCCActionPerformed(evt);
             }
         });
 
-        jButtonDC.setText("D | C");
-        jButtonDC.addActionListener(new java.awt.event.ActionListener() {
+        JButtonDC.setText("D | C");
+        JButtonDC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDCActionPerformed(evt);
+                JButtonDCActionPerformed(evt);
             }
         });
 
@@ -88,15 +90,15 @@ public class PanelPartieCoups extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jLabel3)
                             .addGap(18, 18, 18)
-                            .addComponent(JbuttonCC)
+                            .addComponent(JButtonCC)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonCD))
+                            .addComponent(JButtonCD))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addGap(8, 8, 8)
-                            .addComponent(jButtonDC)
+                            .addComponent(JButtonDC)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButtonDD)))
+                            .addComponent(JButtonDD)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel5)
@@ -116,40 +118,59 @@ public class PanelPartieCoups extends javax.swing.JPanel {
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCD)
-                    .addComponent(JbuttonCC)
+                    .addComponent(JButtonCD)
+                    .addComponent(JButtonCC)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonDD)
-                    .addComponent(jLabel4)
-                    .addComponent(jButtonDC))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JButtonDC, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(JButtonDD)
+                        .addComponent(jLabel4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JbuttonCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbuttonCCActionPerformed
-        laPartie.cooperer(true, true);
-    }//GEN-LAST:event_JbuttonCCActionPerformed
+    private void JButtonCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonCCActionPerformed
+       // laPartie.cooperer(true, true);
+    }//GEN-LAST:event_JButtonCCActionPerformed
 
-    private void jButtonDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDCActionPerformed
-        laPartie.cooperer(false, true);
-    }//GEN-LAST:event_jButtonDCActionPerformed
+    private void JButtonDCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonDCActionPerformed
+        // laPartie.cooperer(false, true);
+    }//GEN-LAST:event_JButtonDCActionPerformed
 
-    private void jButtonCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCDActionPerformed
-        laPartie.cooperer(true, false);
-    }//GEN-LAST:event_jButtonCDActionPerformed
+    private void JButtonCDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonCDActionPerformed
+        // laPartie.cooperer(true, false);
+    }//GEN-LAST:event_JButtonCDActionPerformed
 
-    private void jButtonDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDDActionPerformed
-        laPartie.cooperer(false, false);
-    }//GEN-LAST:event_jButtonDDActionPerformed
+    private void JButtonDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonDDActionPerformed
+        // laPartie.cooperer(false, false);
+    }//GEN-LAST:event_JButtonDDActionPerformed
 
-
+public JButton getBouton(int choix)
+{
+    JButton tmp = null;
+        switch (choix) {
+            case 1:
+                tmp = JButtonCC;
+                break;
+            case 2:
+                tmp= JButtonCD;
+                break;
+            case 3:
+                tmp = JButtonDC;
+                break;
+            case 4:
+                tmp = JButtonDD;
+                break;
+        }
+    return tmp;
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton JbuttonCC;
-    private javax.swing.JButton jButtonCD;
-    private javax.swing.JButton jButtonDC;
-    private javax.swing.JButton jButtonDD;
+    private javax.swing.JButton JButtonCC;
+    private javax.swing.JButton JButtonCD;
+    private javax.swing.JButton JButtonDC;
+    private javax.swing.JButton JButtonDD;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

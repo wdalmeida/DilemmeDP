@@ -5,6 +5,8 @@
  */
 package Main;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Warren
@@ -83,7 +85,21 @@ public class PanelPartieSynthese extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+public JLabel getLabel(String choix){
+    JLabel tmp = null;
+        switch (choix) {
+            case "nbCoups":
+                tmp= nbCoups;
+                break;
+            case "scoreA":
+                tmp= scoreA;
+                break;
+            case "scoreB":
+                tmp = scoreB;
+                break;
+        }
+        return tmp;
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelNbCoups;
