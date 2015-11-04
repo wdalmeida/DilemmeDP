@@ -55,9 +55,9 @@ public class IHMDilemme extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPartieCoups1 = new Main.PanelPartieCoups();
-        panelPartieSynthese1 = new Main.PanelPartieSynthese(laPartie);
-        panelPartieTableau1 = new Main.PanelPartieTableau(laPartie);
+        panelPartieCoups1 = new Vue.PanelPartieCoups();
+        panelPartieSynthese1 = new Vue.PanelPartieSynthese(laPartie);
+        panelPartieTableau1 = new Vue.PanelPartieTableau(laPartie);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,8 +143,8 @@ public class IHMDilemme extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Main.PanelPartieCoups panelPartieCoups1;
-    private Main.PanelPartieSynthese panelPartieSynthese1;
-    private Main.PanelPartieTableau panelPartieTableau1;
+    private Vue.PanelPartieCoups panelPartieCoups1;
+    private Vue.PanelPartieSynthese panelPartieSynthese1;
+    private Vue.PanelPartieTableau panelPartieTableau1;
     // End of variables declaration//GEN-END:variables
 }

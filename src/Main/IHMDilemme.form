@@ -55,17 +55,17 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="Main.PanelPartieCoups" name="panelPartieCoups1">
+    <Component class="Vue.PanelPartieCoups" name="panelPartieCoups1">
     </Component>
-    <Component class="Main.PanelPartieSynthese" name="panelPartieSynthese1">
+    <Component class="Vue.PanelPartieSynthese" name="panelPartieSynthese1">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Main.PanelPartieSynthese(laPartie)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Vue.PanelPartieSynthese(laPartie)"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
       </AuxValues>
     </Component>
-    <Component class="Main.PanelPartieTableau" name="panelPartieTableau1">
+    <Component class="Vue.PanelPartieTableau" name="panelPartieTableau1">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Main.PanelPartieTableau(laPartie)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Vue.PanelPartieTableau(laPartie)"/>
       </AuxValues>
     </Component>
   </SubComponents>

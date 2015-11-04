@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package Vue;
 
+import Main.Partie;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JTable;
