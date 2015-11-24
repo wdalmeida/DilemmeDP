@@ -5,8 +5,10 @@
  */
 package Main;
 
+import java.sql.CallableStatement;
 import java.sql.SQLException;
 import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -15,7 +17,14 @@ import org.junit.Test;
  */
 public class JoueurTest {
 
-    public JoueurTest() {
+    @Before
+    public void setup() throws SQLException {
+        java.sql.Connection bdd = Database.getConnection();
+        CallableStatement cs = bdd.prepareCall("CALL joueur_refresh()");
+        cs.execute();
+        cs.close();
+        bdd.close();
+
     }
 
     /**
@@ -27,8 +36,6 @@ public class JoueurTest {
         int expResult = 0;
         int result = instance.getId();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -52,11 +59,9 @@ public class JoueurTest {
     public void testGetPwd() {
         System.out.println("getPwd");
         Joueur instance = new Joueur(0, "w", "w");
-        String expResult = "";
+        String expResult = "w";
         String result = instance.getPwd();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -68,8 +73,6 @@ public class JoueurTest {
         int id = 0;
         Joueur instance = new Joueur(0, "w", "w");
         instance.setId(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -81,8 +84,6 @@ public class JoueurTest {
         String login = "";
         Joueur instance = new Joueur(0, "w", "w");
         instance.setLogin(login);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -94,22 +95,6 @@ public class JoueurTest {
         String pwd = "";
         Joueur instance = new Joueur(0, "w", "w");
         instance.setPwd(pwd);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of hashCode method, of class Joueur.
-     */
-    @Test
-    public void testHashCode() {
-        System.out.println("hashCode");
-        Joueur instance = new Joueur();
-        int expResult = 0;
-        int result = instance.hashCode();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -123,8 +108,7 @@ public class JoueurTest {
         boolean expResult = false;
         boolean result = instance.equals(obj);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     @Test
@@ -133,15 +117,14 @@ public class JoueurTest {
         Joueur expected = new Joueur(1, "titi", "gros minet");
         assertEquals(expected, result);
     }
-    /*
+
     @Test
-     public void testUpdate() {
-        Joueur joueurBdd = new Joueur();
-        Joueur joueur = new Joueur(1, "warren", "dalm");
-        joueurBdd.update(1, "warren", "dalm");
-        assertEquals(joueurBdd.getById(1), joueur);
+    public void testUpdate() throws SQLException {
+        Joueur result = new Joueur(1, "warren", "dalm");
+        Joueur.update(1, "warren", "dalm");
+        assertEquals(Joueur.getById(1), result);
     }
-     */
+
     @Test
     public void testDelete() throws SQLException {
         Joueur.delete(1);
