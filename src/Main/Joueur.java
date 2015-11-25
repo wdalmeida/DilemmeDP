@@ -87,12 +87,15 @@ public class Joueur {
     }
 
     public static Joueur getById(int i) throws SQLException {
+        Joueur joueur = null;
         java.sql.Connection bdd = Database.getConnection();
         Statement statement = bdd.createStatement();
         String query = "SELECT * FROM joueur WHERE id=" + i;
         ResultSet rs = statement.executeQuery(query);
-        rs.next();
-        Joueur joueur = new Joueur(rs.getInt(1), rs.getString(2), rs.getString(3));
+        if (rs.next()) {
+            joueur = new Joueur(rs.getInt(1), rs.getString(2), rs.getString(3));
+        }
+
         return joueur;
     }
 

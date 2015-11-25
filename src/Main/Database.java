@@ -47,10 +47,7 @@ public class Database {
             System.out.println("*** Driver loaded.");
         } catch (ClassNotFoundException e) {
             System.err.println("*** ERROR: Driver " + DRIVER_NAME + " not found");
-        } catch (InstantiationException e) {
-            System.err.println("*** ERROR: Impossible to create an instance of " + DRIVER_NAME);
-            System.err.println(e.getMessage());
-        } catch (IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException e) {
             System.err.println("*** ERROR: Impossible to create an instance of " + DRIVER_NAME);
             System.err.println(e.getMessage());
         }
@@ -61,6 +58,7 @@ public class Database {
      * de connexion, mâme si cela est envisageable plus tard (ne changerait rien
      * à l'appel de la méthode)
      *
+     * @return
      * @throws java.sql.SQLException
      */
     public static Connection getConnection() throws SQLException {
